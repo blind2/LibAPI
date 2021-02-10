@@ -52,6 +52,14 @@ $settings['db'] = [
         PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8 COLLATE utf8_general_ci'
     ],
 ];
+// Logger settings
+$settings['logger'] = [
+    'name' => 'app',
+    'path' => __DIR__ . '/../logs',
+    'filename' => 'app.log',
+    'level' => \Monolog\Logger::DEBUG,
+    'file_permission' => 0775,
+];
 
 
 return $settings;

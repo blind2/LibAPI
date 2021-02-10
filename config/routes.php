@@ -9,5 +9,8 @@ return function (App $app) {
 
     $app->post('/users', \App\Action\UserCreateAction::class);
 
+    $app->get('/books', \App\Action\ShowBookAction::class);
+
+    $app->get('/id', \App\Action\ShowBookIDAction::class);
 };
 
