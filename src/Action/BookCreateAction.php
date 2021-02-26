@@ -1,38 +1,34 @@
 <?php
 /**
- * File Name: ShowBookAction.php
+ * File Name: BookCreateAction.php
  * User: alexa
  */
 
 namespace App\Action;
 
 
-use App\Domain\User\Service\ShowBook;
+use App\Domain\User\Service\BookCreator;
+use App\Domain\User\Service\UserCreator;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-final class ShowBookAction
+final class BookCreateAction
 {
-    private $showBook;
+    private $bookCreator;
 
-    public function __construct(ShowBook $showBook){
-        $this->showBook = $showBook;
+    public function __construct(BookCreator $bookCreator)
+    {
+        $this->bookCreator= $bookCreator;
     }
 
     public function __invoke(
         ServerRequestInterface $request,
         ResponseInterface $response
     ): ResponseInterface {
-        // Collect input from the HTTP request
-        $data = (array)$request->getParsedBody();
-
-        // Invoke the Domain with inputs and retain the result
-        $books = $this->showBook->getAllbook();
-        //$userId = $this->userCreator->createUser($data);
 
         // Transform the result into the JSON representation
         $result = [
-            'book' => $books
+            'status' => 'le livre a ete ajoutee'
         ];
 
         // Build the HTTP response

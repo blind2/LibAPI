@@ -1,22 +1,23 @@
 <?php
 /**
- * File Name: ShowBookAction.php
+ * File Name: DeleteBookAction.php
  * User: alexa
  */
 
 namespace App\Action;
 
 
-use App\Domain\User\Service\ShowBook;
+use App\Domain\User\Service\DeleteBook;
+use App\Domain\User\Service\ShowBookID;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-final class ShowBookAction
+final class DeleteBookAction
 {
-    private $showBook;
+    private $deleteBook;
 
-    public function __construct(ShowBook $showBook){
-        $this->showBook = $showBook;
+    public function __construct(DeleteBook $deleteBook){
+        $this->deleteBook = $deleteBook;
     }
 
     public function __invoke(
@@ -27,12 +28,12 @@ final class ShowBookAction
         $data = (array)$request->getParsedBody();
 
         // Invoke the Domain with inputs and retain the result
-        $books = $this->showBook->getAllbook();
+        $book= $this->deleteBook->deleteBook();
         //$userId = $this->userCreator->createUser($data);
 
         // Transform the result into the JSON representation
         $result = [
-            'book' => $books
+            'result' => $book
         ];
 
         // Build the HTTP response

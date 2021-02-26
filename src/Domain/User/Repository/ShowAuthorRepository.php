@@ -1,13 +1,13 @@
 <?php
 /**
- * File Name: ShowBookIDRepository.php
+ * File Name: ShowAuthorRepository.php
  * User: alexa
  */
 
 namespace App\Domain\User\Repository;
 use PDO;
 
-class ShowBookIDRepository
+class ShowAuthorRepository
 {
     private $connection;
 
@@ -16,13 +16,13 @@ class ShowBookIDRepository
         $this->connection = $connection;
     }
 
-    public function selectSingleBook(): array
+    public function selectAllAuthor(): array
     {
-        $number = $_GET["id"];
-        $sql = "SELECT * FROM livres WHERE id = $number ";
+        $sql = "SELECT * FROM auteurs";
         $query = $this->connection->prepare($sql);
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        //retourne la liste des auteurs
         return $result;
     }
 }

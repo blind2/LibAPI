@@ -27,7 +27,7 @@ final class ShowBookIDAction
         $data = (array)$request->getParsedBody();
 
         // Invoke the Domain with inputs and retain the result
-        $booksID= $this->showBookID->getBookByID($data);
+        $booksID= $this->showBookID->getBookByID();
         //$userId = $this->userCreator->createUser($data);
 
         // Transform the result into the JSON representation

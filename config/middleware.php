@@ -3,10 +3,17 @@
 use Selective\BasePath\BasePathMiddleware;
 use Slim\App;
 use Slim\Middleware\ErrorMiddleware;
+use Slim\Views\TwigMiddleware;
+use  App\Middleware;
+
 
 return function (App $app) {
     // Parse json, form data and xml
+    $app ->add(Middleware::class);
+
     $app->addBodyParsingMiddleware();
+
+     $app->add(TwigMiddleware::class);
 
     // Add the Slim built-in routing middleware
     $app->addRoutingMiddleware();

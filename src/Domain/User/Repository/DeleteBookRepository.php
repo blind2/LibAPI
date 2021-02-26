@@ -1,13 +1,13 @@
 <?php
 /**
- * File Name: ShowBookIDRepository.php
+ * File Name: DeleteBookRepository.php
  * User: alexa
  */
 
 namespace App\Domain\User\Repository;
 use PDO;
 
-class ShowBookIDRepository
+final class DeleteBookRepository
 {
     private $connection;
 
@@ -16,13 +16,12 @@ class ShowBookIDRepository
         $this->connection = $connection;
     }
 
-    public function selectSingleBook(): array
+    public function deleteBook()
     {
+
         $number = $_GET["id"];
-        $sql = "SELECT * FROM livres WHERE id = $number ";
+        $sql = "DELETE FROM livre_auteur where livres_id = $number;DElETE FROM livres WHERE id = $number ";
         $query = $this->connection->prepare($sql);
         $query->execute();
-        $result = $query->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
     }
 }

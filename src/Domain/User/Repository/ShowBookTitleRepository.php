@@ -1,13 +1,13 @@
 <?php
 /**
- * File Name: ShowBookIDRepository.php
+ * File Name: ShowBookTitleRepository.php
  * User: alexa
  */
 
 namespace App\Domain\User\Repository;
-use PDO;
 
-class ShowBookIDRepository
+use PDO;
+class ShowBookTitleRepository
 {
     private $connection;
 
@@ -18,8 +18,8 @@ class ShowBookIDRepository
 
     public function selectSingleBook(): array
     {
-        $number = $_GET["id"];
-        $sql = "SELECT * FROM livres WHERE id = $number ";
+        $title = $_GET["title"];
+        $sql = "SELECT * FROM livres WHERE titre = $title";
         $query = $this->connection->prepare($sql);
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);

@@ -22,4 +22,6 @@ $app = $container->get(App::class);
 // Register middleware
 (require __DIR__ . '/middleware.php')($app);
 
+
+
 return $app;
